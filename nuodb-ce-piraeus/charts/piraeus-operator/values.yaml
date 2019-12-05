@@ -1,0 +1,20 @@
+etcd:
+  persistence:
+    enabled: true
+  auth:
+    rbac:
+      enabled: false
+  envVarsConfigMap: "etcd-env-vars"
+csi:
+  image:
+    repo: "quay.io/linbit"
+    name: "linstor"
+    version: "v0.7.2"
+operator:
+  image:
+    repo: "deleteriouseffect"
+    name: "operator"
+    version: "experimental"
+  nodeSet:
+    spec:
+      disableDRBDKernelModuleInjection: false

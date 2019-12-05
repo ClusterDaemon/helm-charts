@@ -1,0 +1,22 @@
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: piraeus-two-replicas
+provisioner: linstor.csi.linbit.com
+parameters:
+  autoPlace: "2"
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: nuodb-sm-piraeus
+  labels:
+    type: linstor-drbd
+spec:
+  storageClassName: piraeus-two-replicas
+  resources:
+    requests:
+      storage: 20Gi
+  accessModes:
+    - ReadWriteOnce

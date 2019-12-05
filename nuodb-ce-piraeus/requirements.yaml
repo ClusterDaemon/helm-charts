@@ -1,0 +1,4 @@
+# dependencies:
+#  - name: piraeus-operator
+#    version: 0.1.0
+#    repository: https://gitlab.com/linbit/charts

@@ -1,0 +1,6 @@
+apiVersion: piraeus.linbit.com/v1alpha1
+kind: PiraeusControllerSet
+metadata:
+  name: {{ template "piraeus-operator.fullname" . }}
+spec:
+  etcdURL: {{ .Release.Name }}.{{ .Release.Namespace }}.{{ .Values.etcd.service.dnsBase }}:{{ .Values.etcd.service.port }}

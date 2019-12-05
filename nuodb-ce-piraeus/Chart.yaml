@@ -1,0 +1,21 @@
+apiVersion: v1
+name: nuodb-ce-piraeus-helm
+version: 0.1.0-piraeus.1
+appVersion: 3.3.0
+description: NuoDB Community Edition
+  system, backed by Piraeus Datastore
+keywords:
+- nuodb
+- database
+- sql
+- LINSTOR
+- Piraeus
+home: https://www.nuodb.com/ 
+icon: https://www.nuodb.com/sites/all/themes/nuodb/logo.svg
+sources:
+- https://github.com/kubernetes/charts
+- https://gitlab.com/linbit/charts
+maintainers:
+- name: tgates
+  email: tgates@nuodb.com
+engine: gotpl

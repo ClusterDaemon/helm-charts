@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "piraeus-operator.fullname" . }}-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: {{ template "piraeus-operator.fullname" . }}-deployment
+  template:
+    metadata:
+      labels:
+        name: {{ template "piraeus-operator.fullname" . }}-deployment
+    spec:
+      serviceAccountName: {{ template "piraeus-operator.fullname" . }}-sa
+      containers:
+        - name: piraeus-operator
+          image: {{ .Values.operator.image.repo }}/{{ .Values.operator.image.name }}:{{ .Values.operator.image.version }}
+          command:
+          - piraeus-operator
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: "piraeus-operator"
